@@ -20,7 +20,7 @@ function direction(p){
  if(left||right)x=left?-1:1;
  if(up||down)y=up?-1:1;
  x=Math.abs(x)<DEAD?0:Math.sign(x);y=Math.abs(y)<DEAD?0:Math.sign(y);
- return (y+1)*3+(x+1)+1; // teclado numérico: 1=↙ 2=↓ 3=↘ 4=← 5=neutro 6=→ 7=↖ 8=↑ 9=↗
+ return (1-y)*3+(x+1)+1; // teclado numérico: 1=↙ 2=↓ 3=↘ 4=← 5=neutro 6=→ 7=↖ 8=↑ 9=↗
 }
 function relative(dir,face){if(face>=0)return dir;const row=Math.floor((dir-1)/3),col=(dir-1)%3;return row*3+(2-col)+1}
 function update(){
