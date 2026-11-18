@@ -14,13 +14,13 @@ function update(){
   const current=new Set();
   for(let i=0;i<p.buttons.length;i++)if(pressed(p,i))current.add(i);
   const axis=p.axes[0]||0,vertical=p.axes[1]||0;
-  if(axis< -deadzone)held.add('a');else if(axis>deadzone)held.add('d');
+  if(axis< -deadzone){held.add('a');if(!previous.has('axis-left'))tap.add('a')}else if(axis>deadzone){held.add('d');if(!previous.has('axis-right'))tap.add('d')}
   if(vertical< -0.6)current.add(12);else if(vertical>.65)held.add('s');
   for(const i of current){const k=map[i];if(!k)continue;
-    if(['a','d','s','shift'].includes(k))held.add(k);
+    if(['a','d','s','shift'].includes(k)){held.add(k);if(!previous.has(i))tap.add(k);}
     else if(!previous.has(i))tap.add(k);
   }
-  previous.clear();for(const i of current)previous.set(i,true);
+  previous.clear();for(const i of current)previous.set(i,true);if(axis< -deadzone)previous.set('axis-left',true);if(axis>deadzone)previous.set('axis-right',true);
 }
 window.markysPad={
   update,down:k=>held.has(k)||tap.has(k),consume:k=>tap.delete(k),
