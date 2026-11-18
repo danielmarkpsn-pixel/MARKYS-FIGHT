@@ -30,7 +30,7 @@ function update(){
  connected=!!p;held.clear();tap.clear();if(!p)return;
  const current=new Set();for(let i=0;i<p.buttons.length;i++)if(pressed(p,i))current.add(i);
  const dir=direction(p),now=performance.now();
- if(dir!==lastDir){if(dir!==5)history.push({dir,t:now});lastDir=dir}
+ if(dir!==lastDir){if(dir!==5)history.push({dir,t:now});if([7,8,9].includes(dir)&&![7,8,9].includes(lastDir))tap.add('w');lastDir=dir}
  while(history.length&&now-history[0].t>WINDOW)history.shift();
  if([1,4,7].includes(dir))held.add('a');
  if([3,6,9].includes(dir))held.add('d');
