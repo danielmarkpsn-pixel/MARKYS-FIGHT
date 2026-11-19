@@ -1,0 +1,32 @@
+{
+  "id": "gpt-6",
+  "name": "GPT-6",
+  "portrait": "../../GPT-6.svg",
+  "spriteRoot": "./sprites/",
+  "assetRoot": "./assets/",
+  "controlsProfile": "default",
+  "animations": {
+    "idle": null,
+    "walk": null,
+    "run": null,
+    "jump": null,
+    "crouch": null,
+    "guard": null,
+    "punchFront": null,
+    "punchBack": null,
+    "kickFront": null,
+    "kickBack": null,
+    "hurt": null,
+    "magic1": null,
+    "magic2": null,
+    "magic3": null,
+    "special": null
+  },
+  "powers": [
+    "Pulso Quântico",
+    "Firewall",
+    "Salto Dimensional",
+    "Singularidade"
+  ],
+  "notes": "Visual SVG original provisório; sprites articulados ainda não produzidos."
+}
