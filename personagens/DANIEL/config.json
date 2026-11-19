@@ -26,5 +26,12 @@
     "special": null
   },
   "controlsProfile": "default",
-  "notes": "Sprites ainda não cadastrados. Não substituir o PNG original por sprites genéricos."
+  "notes": "Efeitos vetoriais criados em assets/. Sprites de animação articulada ainda não produzidos; preservar aparência de DANIEL.png.",
+  "effects": {
+    "magic1": "hipercorrida.svg",
+    "magic2": "onda-sonora.svg",
+    "magic3": "chute-veloz.svg",
+    "hit": "impacto.svg",
+    "dust": "poeira.svg"
+  }
 }
