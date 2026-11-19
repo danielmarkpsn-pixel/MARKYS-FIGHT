@@ -5,180 +5,28 @@
   "spriteRoot": "./sprites/",
   "assetRoot": "./assets/",
   "animations": {
-    "idle": {
-      "file": "idle.png",
-      "frames": 8,
-      "columns": 4,
-      "fps": 8,
-      "frameWidth": 160,
-      "frameHeight": 224,
-      "loop": true
-    },
-    "walk": {
-      "file": "walk.png",
-      "frames": 8,
-      "columns": 4,
-      "fps": 12,
-      "frameWidth": 160,
-      "frameHeight": 224,
-      "loop": true
-    },
-    "run": {
-      "file": "run.png",
-      "frames": 8,
-      "columns": 4,
-      "fps": 16,
-      "frameWidth": 160,
-      "frameHeight": 224,
-      "loop": true
-    },
-    "jump": {
-      "file": "jump.png",
-      "frames": 5,
-      "columns": 4,
-      "fps": 12,
-      "frameWidth": 160,
-      "frameHeight": 224,
-      "loop": false
-    },
-    "fall": {
-      "file": "fall.png",
-      "frames": 3,
-      "columns": 3,
-      "fps": 10,
-      "frameWidth": 160,
-      "frameHeight": 224,
-      "loop": false
-    },
-    "crouch": {
-      "file": "crouch.png",
-      "frames": 3,
-      "columns": 3,
-      "fps": 10,
-      "frameWidth": 160,
-      "frameHeight": 224,
-      "loop": false
-    },
-    "guard": {
-      "file": "guard.png",
-      "frames": 4,
-      "columns": 4,
-      "fps": 10,
-      "frameWidth": 160,
-      "frameHeight": 224,
-      "loop": true
-    },
-    "crouchGuard": {
-      "file": "crouchGuard.png",
-      "frames": 3,
-      "columns": 3,
-      "fps": 10,
-      "frameWidth": 160,
-      "frameHeight": 224,
-      "loop": true
-    },
-    "punchFront": {
-      "file": "punchFront.png",
-      "frames": 6,
-      "columns": 4,
-      "fps": 18,
-      "frameWidth": 160,
-      "frameHeight": 224,
-      "loop": false
-    },
-    "punchBack": {
-      "file": "punchBack.png",
-      "frames": 7,
-      "columns": 4,
-      "fps": 17,
-      "frameWidth": 160,
-      "frameHeight": 224,
-      "loop": false
-    },
-    "kickFront": {
-      "file": "kickFront.png",
-      "frames": 7,
-      "columns": 4,
-      "fps": 17,
-      "frameWidth": 160,
-      "frameHeight": 224,
-      "loop": false
-    },
-    "kickBack": {
-      "file": "kickBack.png",
-      "frames": 8,
-      "columns": 4,
-      "fps": 16,
-      "frameWidth": 160,
-      "frameHeight": 224,
-      "loop": false
-    },
-    "hurt": {
-      "file": "hurt.png",
-      "frames": 4,
-      "columns": 4,
-      "fps": 12,
-      "frameWidth": 160,
-      "frameHeight": 224,
-      "loop": false
-    },
-    "knockdown": {
-      "file": "knockdown.png",
-      "frames": 6,
-      "columns": 4,
-      "fps": 12,
-      "frameWidth": 160,
-      "frameHeight": 224,
-      "loop": false
-    },
-    "getup": {
-      "file": "getup.png",
-      "frames": 6,
-      "columns": 4,
-      "fps": 12,
-      "frameWidth": 160,
-      "frameHeight": 224,
-      "loop": false
-    },
-    "magic1": {
-      "file": "magic1.png",
-      "frames": 8,
-      "columns": 4,
-      "fps": 18,
-      "frameWidth": 160,
-      "frameHeight": 224,
-      "loop": false
-    },
-    "magic2": {
-      "file": "magic2.png",
-      "frames": 8,
-      "columns": 4,
-      "fps": 16,
-      "frameWidth": 160,
-      "frameHeight": 224,
-      "loop": false
-    },
-    "magic3": {
-      "file": "magic3.png",
-      "frames": 8,
-      "columns": 4,
-      "fps": 18,
-      "frameWidth": 160,
-      "frameHeight": 224,
-      "loop": false
-    },
-    "special": {
-      "file": "special.png",
-      "frames": 12,
-      "columns": 4,
-      "fps": 20,
-      "frameWidth": 160,
-      "frameHeight": 224,
-      "loop": false
-    }
+    "idle": null,
+    "walk": null,
+    "run": null,
+    "jump": null,
+    "fall": null,
+    "crouch": null,
+    "guard": null,
+    "crouchGuard": null,
+    "punchFront": null,
+    "punchBack": null,
+    "kickFront": null,
+    "kickBack": null,
+    "hurt": null,
+    "knockdown": null,
+    "getup": null,
+    "magic1": null,
+    "magic2": null,
+    "magic3": null,
+    "special": null
   },
   "controlsProfile": "default",
-  "notes": "19 spritesheets experimentais gerados a partir de DANIEL.png com rig 2D. Revisão artística e testes em partida necessários.",
+  "notes": "DANIEL.png é referência visual de identidade, NÃO fonte para rigging ou rotação de membros. Spritesheets anteriores desativados por baixa qualidade; produzir cada pose integralmente redesenhada com anatomia coerente.",
   "effects": {
     "magic1": "hipercorrida.svg",
     "magic2": "onda-sonora.svg",
