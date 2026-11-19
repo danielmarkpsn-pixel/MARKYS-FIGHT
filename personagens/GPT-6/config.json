@@ -1,7 +1,7 @@
 {
   "id": "gpt-6",
   "name": "GPT-6",
-  "portrait": "../../GPT-6.svg",
+  "portrait": "../../GPT-6.png",
   "spriteRoot": "./sprites/",
   "assetRoot": "./assets/",
   "controlsProfile": "default",
