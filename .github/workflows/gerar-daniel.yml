@@ -24,6 +24,14 @@ jobs:
         run: python tools/generate_daniel_sprites.py
       - name: Validar sprites e configurações
         run: python tools/validate_daniel_sprites.py
+      - name: Guardar pacote PNG como artefato
+        uses: actions/upload-artifact@v4
+        with:
+          name: daniel-19-spritesheets
+          path: |
+            personagens/DANIEL/sprites/*.png
+            personagens/DANIEL/config.json
+          retention-days: 30
       - name: Publicar os sprites na main
         run: |
           git config user.name "github-actions[bot]"
