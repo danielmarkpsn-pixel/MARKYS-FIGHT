@@ -52,7 +52,10 @@ function drawFighter(f,t){
  const bob=locomotion?-Math.abs(step)*(stateName==='run'?6:3):stateName==='idle'?Math.sin(phase*3)*1.4:0;
  ctx.translate(0,bob);
  ctx.fillStyle='#050a18a0';ctx.beginPath();ctx.ellipse(0,4,34,8,0,0,Math.PI*2);ctx.fill();
- if(img&&img.complete&&img.naturalWidth){
+ const spriteState=stateName==='punch'?(f.attackVariant==='back'?'punchBack':'punchFront'):stateName==='kick'?(f.attackVariant==='back'?'kickBack':'kickFront'):stateName==='magic'?'magic1':stateName;
+ // Sprites articulados já incluem a pose; não distorcer nem girar a imagem por cima.
+ const hasSprite=window.markysSprites?.draw(ctx,f,spriteState,-55,-165,110,165);
+ if(!hasSprite&&img&&img.complete&&img.naturalWidth){
    ctx.save();
    const dur=Math.max(.01,f.attackDuration||.35);
    const progress=clamp(1-f.attackTime/dur,0,1);
@@ -68,7 +71,7 @@ function drawFighter(f,t){
    if(stateName==='guard')ctx.scale(.94,.96);if(stateName==='crouch'||stateName==='crouchGuard'){ctx.translate(0,0);ctx.scale(1.10,.70)}
    if(stateName==='kick')ctx.scale(1+(f.attackVariant==='back'?.12:.07)*swing,1-.04*swing);
    if(stateName==='special')ctx.scale(1.03,1.03);
-   const spriteState=stateName==='punch'?(f.attackVariant==='back'?'punchBack':'punchFront'):stateName==='kick'?(f.attackVariant==='back'?'kickBack':'kickFront'):stateName==='magic'?'magic1':stateName; if(!window.markysSprites?.draw(ctx,f,spriteState,-55,-165,110,165))ctx.drawImage(img,-55,-165,110,165);
+   ctx.drawImage(img,-55,-165,110,165);
    ctx.restore();
    // Procedural effects use the actual PNG; no substitute character art.
    if(daniel){
