@@ -3,6 +3,7 @@ on:
   push:
     branches: [main]
     paths:
+      - 'index.html'
       - 'sprites.js'
       - 'tests/**'
       - 'tools/install_daniel_sprites.py'
@@ -10,6 +11,7 @@ on:
       - '.github/workflows/validar-sprites.yml'
   pull_request:
     paths:
+      - 'index.html'
       - 'sprites.js'
       - 'tests/**'
       - 'tools/install_daniel_sprites.py'
