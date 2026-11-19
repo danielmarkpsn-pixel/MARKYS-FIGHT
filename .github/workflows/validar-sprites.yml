@@ -1,0 +1,34 @@
+name: Validar sprites MARKYS FIGHT
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'sprites.js'
+      - 'tests/**'
+      - 'tools/install_daniel_sprites.py'
+      - 'personagens/DANIEL/**'
+      - '.github/workflows/validar-sprites.yml'
+  pull_request:
+    paths:
+      - 'sprites.js'
+      - 'tests/**'
+      - 'tools/install_daniel_sprites.py'
+      - 'personagens/DANIEL/**'
+      - '.github/workflows/validar-sprites.yml'
+  workflow_dispatch:
+jobs:
+  sprites:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verificar sintaxe do jogo e carregador
+        run: |
+          node --check sprites.js
+          node --test tests/sprites.test.cjs
+      - name: Verificar sintaxe do instalador
+        run: python -m py_compile tools/install_daniel_sprites.py
+      - name: Validar manifestos e sprites PNG presentes
+        run: python tools/validate_daniel_sprites.py
