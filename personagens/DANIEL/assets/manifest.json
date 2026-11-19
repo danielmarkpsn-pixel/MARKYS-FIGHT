@@ -1,0 +1,12 @@
+{
+  "character": "DANIEL",
+  "format": "svg",
+  "assets": {
+    "magic1": "hipercorrida.svg",
+    "magic2": "onda-sonora.svg",
+    "magic3": "chute-veloz.svg",
+    "hit": "impacto.svg",
+    "dust": "poeira.svg"
+  },
+  "status": "assets-ready; sprite-frame-art-pending"
+}
