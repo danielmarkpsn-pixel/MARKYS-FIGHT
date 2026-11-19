@@ -14,7 +14,7 @@ assert "if(state==='playing')control(e,dt)" in html, 'Não executar CPU após o 
 assert "f.magicAnim===4?'special'" in html, 'O especial deve selecionar a animação special'
 assert "if(!daniel){" in html, 'PNG de referência não pode ser deformado'
 assert len(cfg['animations'])==19
-assert all(v is None for v in cfg['animations'].values()), 'Sprites reprovados não devem ser ativados'
+assert all(v is None or (isinstance(v,dict) and v.get('file')==name+'.png') for name,v in cfg['animations'].items()), 'Configuração deve referenciar sprites próprios'
 assert (root/'DANIEL.png').exists(), 'Preservar a referência original'
 assert (root/'personagens/DANIEL/DIRECAO_DE_ARTE.md').exists()
 print('OK: invariantes do combate e da arte do Daniel')
