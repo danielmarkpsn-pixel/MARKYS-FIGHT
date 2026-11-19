@@ -28,6 +28,8 @@ jobs:
         run: |
           node --check sprites.js
           node --test tests/sprites.test.cjs
+      - name: Verificar invariantes do combate e arte do Daniel
+        run: python tests/test_daniel_combat.py
       - name: Verificar sintaxe do instalador
         run: python -m py_compile tools/install_daniel_sprites.py
       - name: Validar manifestos e sprites PNG presentes
