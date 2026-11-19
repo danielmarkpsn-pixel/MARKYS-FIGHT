@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="pt-BR"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MARKYS FIGHT — Laboratório de sprites do Daniel</title>
+<style>
+:root{color-scheme:dark;font-family:system-ui}body{margin:0;background:#07101f;color:#eaf5ff}header,main{max-width:1040px;margin:auto;padding:20px}h1{font-size:1.5rem}p{line-height:1.6;color:#b9cbe0}section{display:flex;gap:20px;flex-wrap:wrap;align-items:center}canvas{background:linear-gradient(#152a46 0 79%,#294458 79% 81%,#162235 81%);border:1px solid #5175a3;max-width:100%;image-rendering:pixelated}select,button{padding:10px;background:#203755;color:white;border:1px solid #6895c8;border-radius:7px}output{display:block;white-space:pre-wrap;font-size:.9rem;color:#b9cbe0;margin:15px 0}
+</style>
+<header><h1>MARKYS FIGHT — Laboratório de sprites do Daniel</h1><p>Visualização de cada animação real carregada pelo jogo. Se o spritesheet ainda não estiver instalado, o retrato oficial é exibido como referência, sem fingir que há animação pronta.</p></header>
+<main><section><label>Movimento <select id="state"></select></label><button id="restart">Reiniciar</button><button id="flip">Inverter direção</button><label><input type="checkbox" id="grid"> Grade de referência</label></section>
+<canvas id="preview" width="700" height="380"></canvas><output id="diagnostic">Carregando...</output>
+<p>Os arquivos devem estar em <code>personagens/DANIEL/sprites/</code> e registrados em <code>personagens/DANIEL/config.json</code>. Este laboratório não altera os arquivos do jogo.</p></main>
+<script src="../../sprites.js"></script>
+<script>
+'use strict';
+const states=['idle','walk','run','jump','fall','crouch','guard','crouchGuard','punchFront','punchBack','kickFront','kickBack','hurt','knockdown','getup','magic1','magic2','magic3','special'];
+const sel=document.getElementById('state'),out=document.getElementById('diagnostic'),canvas=document.getElementById('preview'),ctx=canvas.getContext('2d');
+for(const state of states){const option=document.createElement('option');option.value=state;option.textContent=state;sel.append(option)}
+const reference=new Image();reference.src='../../DANIEL.png';
+let face=1,started=performance.now(),last=started;
+sel.addEventListener('change',()=>started=performance.now());document.getElementById('restart').onclick=()=>started=performance.now();document.getElementById('flip').onclick=()=>face*=-1;
+window.markysSprites.load('DANIEL').then(()=>{const report=window.markysSprites.report('DANIEL');out.textContent='Estado: '+report.status+'\nAnimações disponíveis: '+(report.ready.join(', ')||'nenhuma')+'\nErros: '+(report.errors.join('; ')||'nenhum')});
+function frame(now){
+ const elapsed=(now-started)/1000;
+ ctx.clearRect(0,0,700,380);ctx.fillStyle='#162942';ctx.fillRect(0,0,700,310);ctx.fillStyle='#354a5c';ctx.fillRect(0,310,700,70);
+ ctx.save();ctx.translate(350,310);ctx.scale(face,1);
+ const rendered=window.markysSprites.draw(ctx,{name:'DANIEL',animClock:elapsed},sel.value,-75,-240,150,240);
+ if(!rendered&&reference.complete&&reference.naturalWidth)ctx.drawImage(reference,-75,-240,150,240);
+ ctx.restore();
+ if(document.getElementById('grid').checked){ctx.strokeStyle='#ffffff55';ctx.beginPath();ctx.moveTo(350,0);ctx.lineTo(350,380);ctx.moveTo(0,310);ctx.lineTo(700,310);ctx.stroke()}
+ ctx.fillStyle=rendered?'#72f5ba':'#ffd17c';ctx.font='16px system-ui';ctx.fillText(rendered?'SPRITESHEET CARREGADO':'RETRATO ORIGINAL — SPRITE AUSENTE',16,28);
+ last=now;requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+</script></html>
