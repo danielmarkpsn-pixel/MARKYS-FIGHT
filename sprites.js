@@ -5,7 +5,7 @@
 (()=>{'use strict';
 const names=['idle','walk','run','jump','fall','crouch','guard','crouchGuard','punchFront','punchBack','kickFront','kickBack','hurt','knockdown','getup','magic1','magic2','magic3','special'];
 const characters=new Map();
-const ASSET_VERSION='20261120-sprites-cenarios-1';
+const ASSET_VERSION='20261121-sprites-node-fix';
 function safeFile(file){return typeof file==='string'&&/^[a-z0-9_-]+\.(png|webp)$/i.test(file)}
 function normalize(def){
  if(!def||!safeFile(def.file))return null;
@@ -59,7 +59,8 @@ function draw(ctx,f,state,x,y,w,h){
  if(!a.bounds)a.bounds={};
  let bounds=a.bounds[index];
  if(!bounds){
-  const off=document.createElement('canvas');off.width=a.width;off.height=a.height;
+  const off=typeof document!=='undefined'&&typeof document.createElement==='function'?document.createElement('canvas'):null;
+  if(off){off.width=a.width;off.height=a.height;
   const oc=off.getContext('2d',{willReadFrequently:true});
   oc.drawImage(a.image,sx,sy,a.width,a.height,0,0,a.width,a.height);
   const pixels=oc.getImageData(0,0,a.width,a.height).data;
@@ -70,6 +71,9 @@ function draw(ctx,f,state,x,y,w,h){
    if(py<top)top=py;if(py>bottom)bottom=py;
   }
   bounds=right>=left?{x:left,y:top,w:right-left+1,h:bottom-top+1}:{x:0,y:0,w:a.width,h:a.height};
+  }else{
+   bounds={x:0,y:0,w:a.width,h:a.height};
+  }
   a.bounds[index]=bounds;
  }
  const dh=h*a.scale,dw=Math.min(w*a.scale,dh*bounds.w/bounds.h);
