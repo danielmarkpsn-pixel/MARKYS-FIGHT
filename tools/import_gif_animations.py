@@ -74,23 +74,24 @@ def extract_frames(path,split_grid=True):
     with Image.open(path) as gif:
         count=gif.n_frames
         if count<1: raise ValueError('GIF sem quadros')
-        # GIFs de um quadro podem conter uma spritesheet inteira.
-        # GIFs de vários quadros são tratados como imagens temporais.
+        # As artes aprovadas podem ter sido exportadas como um GIF que
+        # anima uma COLAGEM 4x2 inteira em cada quadro. Importar essa
+        # colagem como um único quadro reduz os oito desenhos a miniaturas.
+        # Nesse caso, recortar as oito poses do primeiro quadro completo.
+        gif.seek(0)
+        first=gif.convert('RGBA')
+        cols,rows=grid_dimensions(*first.size) if split_grid else (1,1)
+        if cols*rows>1:
+            fw=first.width//cols;fh=first.height//rows
+            for k in range(cols*rows):
+                x=(k%cols)*fw;y=(k//cols)*fh
+                frames.append(first.crop((x,y,x+fw,y+fh)))
+                duration_ms.append(100)
+            return frames,duration_ms
         for idx in range(min(count,MAX_FRAMES)):
             gif.seek(idx)
-            im=gif.convert('RGBA')
-            duration=max(20,int(gif.info.get('duration',100) or 100))
-            if count==1 and split_grid:
-                cols,rows=grid_dimensions(*im.size)
-                if cols*rows>1:
-                    fw=im.width//cols;fh=im.height//rows
-                    for k in range(cols*rows):
-                        frames.append(im.crop(((k%cols)*fw,(k//cols)*fh,
-                                             (k%cols+1)*fw,(k//cols+1)*fh)))
-                        duration_ms.append(100)
-                    break
-            frames.append(im)
-            duration_ms.append(duration)
+            frames.append(gif.convert('RGBA'))
+            duration_ms.append(max(20,int(gif.info.get('duration',100) or 100)))
     return frames,duration_ms
 
 def export(name, fps=None, width=192, height=256, columns=4, dry_run=False):
