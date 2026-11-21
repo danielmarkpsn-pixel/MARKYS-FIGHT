@@ -53,8 +53,27 @@ function draw(ctx,f,state,x,y,w,h){
  const elapsed=Math.max(0,Number(f.animClock)||0);
  const index=a.loop?Math.floor(elapsed*a.fps)%a.frames:Math.min(a.frames-1,Math.floor(elapsed*a.fps));
  const col=index%a.columns,row=Math.floor(index/a.columns);
- const dw=w*a.scale,dh=h*a.scale;
- ctx.drawImage(a.image,col*a.width,row*a.height,a.width,a.height,x+(w-dw)/2+a.offsetX,y+(h-dh)+a.offsetY,dw,dh);
+ // Ancorar os pés na base da caixa de colisão: margens vazias do PNG
+ // não podem deixar o lutador flutuando no meio da arena.
+ const sx=col*a.width,sy=row*a.height;
+ if(!a.bounds)a.bounds={};
+ let bounds=a.bounds[index];
+ if(!bounds){
+  const off=document.createElement('canvas');off.width=a.width;off.height=a.height;
+  const oc=off.getContext('2d',{willReadFrequently:true});
+  oc.drawImage(a.image,sx,sy,a.width,a.height,0,0,a.width,a.height);
+  const pixels=oc.getImageData(0,0,a.width,a.height).data;
+  let left=a.width,right=-1,top=a.height,bottom=-1;
+  for(let py=0;py<a.height;py++)for(let px=0;px<a.width;px++){
+   if(pixels[(py*a.width+px)*4+3]<24)continue;
+   if(px<left)left=px;if(px>right)right=px;
+   if(py<top)top=py;if(py>bottom)bottom=py;
+  }
+  bounds=right>=left?{x:left,y:top,w:right-left+1,h:bottom-top+1}:{x:0,y:0,w:a.width,h:a.height};
+  a.bounds[index]=bounds;
+ }
+ const dh=h*a.scale,dw=Math.min(w*a.scale,dh*bounds.w/bounds.h);
+ ctx.drawImage(a.image,sx+bounds.x,sy+bounds.y,bounds.w,bounds.h,x+(w-dw)/2+a.offsetX,y+h-dh+a.offsetY,dw,dh);
  return true;
 }
 function report(name){const e=characters.get(name);return e?{status:e.status,ready:Object.keys(e.animations).filter(k=>e.animations[k].ready),errors:[...e.errors]}:{status:'not-loaded',ready:[],errors:[]}}
