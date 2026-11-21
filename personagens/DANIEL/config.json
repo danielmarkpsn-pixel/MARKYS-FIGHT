@@ -5,7 +5,15 @@
   "spriteRoot": "./sprites/",
   "assetRoot": "./assets/",
   "animations": {
-    "idle": null,
+    "idle": {
+      "file": "idle.png",
+      "frames": 8,
+      "columns": 4,
+      "fps": 8.33,
+      "frameWidth": 192,
+      "frameHeight": 256,
+      "loop": true
+    },
     "walk": {
       "file": "walk.png",
       "frames": 8,
@@ -42,9 +50,33 @@
       "frameHeight": 256,
       "loop": false
     },
-    "crouch": null,
-    "guard": null,
-    "crouchGuard": null,
+    "crouch": {
+      "file": "crouch.png",
+      "frames": 8,
+      "columns": 4,
+      "fps": 8.33,
+      "frameWidth": 192,
+      "frameHeight": 256,
+      "loop": false
+    },
+    "guard": {
+      "file": "guard.png",
+      "frames": 8,
+      "columns": 4,
+      "fps": 8.33,
+      "frameWidth": 192,
+      "frameHeight": 256,
+      "loop": true
+    },
+    "crouchGuard": {
+      "file": "crouchGuard.png",
+      "frames": 8,
+      "columns": 4,
+      "fps": 8.33,
+      "frameWidth": 192,
+      "frameHeight": 256,
+      "loop": true
+    },
     "punchFront": {
       "file": "punchFront.png",
       "frames": 8,
@@ -54,7 +86,15 @@
       "frameHeight": 256,
       "loop": false
     },
-    "punchBack": null,
+    "punchBack": {
+      "file": "punchBack.png",
+      "frames": 8,
+      "columns": 4,
+      "fps": 8.33,
+      "frameWidth": 192,
+      "frameHeight": 256,
+      "loop": false
+    },
     "kickFront": {
       "file": "kickFront.png",
       "frames": 8,
@@ -118,7 +158,15 @@
       "frameHeight": 256,
       "loop": false
     },
-    "magic3": null,
+    "magic3": {
+      "file": "magic3.png",
+      "frames": 8,
+      "columns": 4,
+      "fps": 8.33,
+      "frameWidth": 192,
+      "frameHeight": 256,
+      "loop": false
+    },
     "special": {
       "file": "special.png",
       "frames": 36,
