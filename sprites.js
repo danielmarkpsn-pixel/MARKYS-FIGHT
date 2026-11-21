@@ -5,6 +5,7 @@
 (()=>{'use strict';
 const names=['idle','walk','run','jump','fall','crouch','guard','crouchGuard','punchFront','punchBack','kickFront','kickBack','hurt','knockdown','getup','magic1','magic2','magic3','special'];
 const characters=new Map();
+const ASSET_VERSION='20261120-sprites-cenarios-1';
 function safeFile(file){return typeof file==='string'&&/^[a-z0-9_-]+\.(png|webp)$/i.test(file)}
 function normalize(def){
  if(!def||!safeFile(def.file))return null;
@@ -18,7 +19,7 @@ async function load(name){
  characters.set(name,entry);
  entry.promise=(async()=>{
   try{
-   const response=await fetch('personagens/'+encodeURIComponent(name)+'/config.json');
+   const response=await fetch('personagens/'+encodeURIComponent(name)+'/config.json?v='+ASSET_VERSION,{cache:'no-store'});
    if(!response.ok)throw Error('HTTP '+response.status);
    const config=await response.json();
    const jobs=[];
@@ -37,7 +38,7 @@ async function load(name){
       resolve();
      };
      image.onerror=()=>{entry.errors.push(state+': arquivo não carregado');resolve()};
-     image.src='personagens/'+encodeURIComponent(name)+'/sprites/'+def.file;
+     image.src='personagens/'+encodeURIComponent(name)+'/sprites/'+def.file+'?v='+ASSET_VERSION;
     }));
    }
    await Promise.all(jobs);
@@ -57,5 +58,5 @@ function draw(ctx,f,state,x,y,w,h){
  return true;
 }
 function report(name){const e=characters.get(name);return e?{status:e.status,ready:Object.keys(e.animations).filter(k=>e.animations[k].ready),errors:[...e.errors]}:{status:'not-loaded',ready:[],errors:[]}}
-window.markysSprites={load,draw,report,status:name=>report(name).status,normalize};
+window.markysSprites={load,draw,report,status:name=>report(name).status,normalize,version:ASSET_VERSION};
 })();
