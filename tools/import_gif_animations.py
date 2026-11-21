@@ -96,7 +96,7 @@ def export(name, fps=None, width=192, height=256, columns=4, dry_run=False):
     config=json.loads(config_path.read_text(encoding='utf-8'))
     prepared=[]
     for state in STATES:
-        filename=DANIEL_NAMES.get(state) if name=='DANIEL' else state+'.gif'
+        filename=(DANIEL_NAMES.get(state,state+'.gif') if name=='DANIEL' else state+'.gif')
         path=find_gif(gifs,filename) if filename else None
         if not path and name=='DANIEL' and state in OPTIONAL_DANIEL:
             path=find_gif(gifs,OPTIONAL_DANIEL[state])
