@@ -1,10 +1,5 @@
 name: Produzir sprites desenhados do Daniel
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'tools/draw_daniel_frames.py'
-      - '.github/workflows/desenhar-daniel.yml'
   workflow_dispatch:
 permissions:
   contents: write
