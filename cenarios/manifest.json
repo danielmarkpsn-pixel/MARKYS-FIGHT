@@ -1,5 +1,36 @@
 {
   "version": 1,
-  "defaultScenario": null,
-  "scenarios": []
+  "defaultScenario": "DANIEL",
+  "scenarios": [
+    {
+      "id": "DANIEL",
+      "character": "DANIEL",
+      "file": "CENARIO DANIEL.gif"
+    },
+    {
+      "id": "HELENA",
+      "character": "HELENA",
+      "file": "CENARIO HELENA.gif"
+    },
+    {
+      "id": "JOSY",
+      "character": "JOSY",
+      "file": "CENARIO JOSY.gif"
+    },
+    {
+      "id": "MARKYS",
+      "character": "MARKYS",
+      "file": "CENARIO MARKYS.gif"
+    },
+    {
+      "id": "MILENA",
+      "character": "MILENA",
+      "file": "CENARIO MILENA.gif"
+    },
+    {
+      "id": "GPT-6",
+      "character": "GPT-6",
+      "file": "CENARIO DESAFIO GPT-6.gif"
+    }
+  ]
 }
