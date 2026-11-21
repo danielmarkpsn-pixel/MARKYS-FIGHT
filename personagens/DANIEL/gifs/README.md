@@ -1,19 +1,36 @@
-# GIFs de animação — Daniel
+# GIFs oficiais enviados — DANIEL
 
-Coloque os GIFs exportados do Ludo.ai nesta pasta com os nomes dos estados do jogo:
+Esta pasta já contém **14 arquivos GIF originais** adicionados pelo usuário. O jogo importa seus movimentos com o workflow `Importar GIFs reais do Daniel` na branch `main`, sem recortar o `DANIEL.png`.
 
-`idle.gif`, `walk.gif`, `run.gif`, `jump.gif`, `fall.gif`, `crouch.gif`, `guard.gif`, `crouchGuard.gif`, `punchFront.gif`, `punchBack.gif`, `kickFront.gif`, `kickBack.gif`, `hurt.gif`, `knockdown.gif`, `getup.gif`, `magic1.gif`, `magic2.gif`, `magic3.gif`, `special.gif`.
+## Correspondência para os estados do jogo
 
-**Requisitos:** personagem completo em cada quadro, fundo transparente, perspectiva lateral, consistência de roupas/rosto e pés alinhados. O arquivo `DANIEL.png` é apenas referência artística.
+| GIF de entrada | Estado do jogo |
+| --- | --- |
+| DANIEL CAMINHANDO.gif | walk |
+| DANIEL CORRENDO.gif | run |
+| DANIEL SALTANDO.gif | jump |
+| DANIEL SOCO DIRETO.gif | punchFront |
+| DANIEL CHUTE ALTO.gif | kickFront |
+| DANIEL SOFRENDO DANO.gif | hurt |
+| DANIEL DERROTADO.gif | knockdown |
+| DANIEL LEVANTANDO.gif | getup |
+| DANIEL HIPERCORRIDA.gif | magic1 |
+| DANIEL ONDA SONICA.gif | magic2 |
+| DANIEL ESPECIAL PARTE 1.gif + PARTE 2.gif + PARTE 3.gif | special (sequência concatenada) |
 
-Depois de enviar os GIFs, execute na raiz do repositório:
+`DANIEL SALTO MORTAL PRA TRAS.gif` é mapeado para `kickBack` temporariamente, até existir um estado específico de evasão; não é tratado como chute alto. **Estados não mapeados continuam com o sprite existente**, sem criar movimento novo artificial.
+
+## Conversão
+
+O workflow é acionado quando os GIFs ou o importador mudam. Também pode ser executado manualmente em GitHub Actions.
 
 ```bash
 python -m pip install Pillow
-python tools/import_gif_animations.py DANIEL --fps 12
+python tools/import_gif_animations.py DANIEL --dry-run
+python tools/import_gif_animations.py DANIEL
 python tools/validate_daniel_sprites.py
 ```
 
-O importador gera PNGs em `personagens/DANIEL/sprites/` e atualiza `config.json`. GIFs com fundo opaco precisam de correção na origem. O importador não remove fundos automaticamente. O FPS informado é uniforme: para movimentos com duração irregular, ajuste o GIF antes da importação.
+As saídas são `personagens/DANIEL/sprites/<estado>.png` e `personagens/DANIEL/config.json`.
 
-**Atenção:** o vídeo enviado demonstra a ferramenta Ludo.ai, mas não fornece os arquivos GIF individuais do Daniel. A conversão só poderá ocorrer depois de os GIFs serem adicionados.
+**Atenção à qualidade:** a extração preserva o canal alfa quando presente, mas não remove fundos opacos dos GIFs. O resultado deve ser conferido no laboratório `personagens/DANIEL/visualizar.html`. GIFs que sejam apenas uma composição de sprites estática poderão exigir recorte ou correção manual antes de serem usados em partida.
