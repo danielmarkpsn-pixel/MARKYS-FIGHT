@@ -49,7 +49,7 @@
       "file": "punchFront.png",
       "frames": 8,
       "columns": 4,
-      "fps": 10,
+      "fps": 10.0,
       "frameWidth": 192,
       "frameHeight": 256,
       "loop": false
@@ -59,7 +59,7 @@
       "file": "kickFront.png",
       "frames": 8,
       "columns": 4,
-      "fps": 10,
+      "fps": 10.0,
       "frameWidth": 192,
       "frameHeight": 256,
       "loop": false
@@ -130,7 +130,7 @@
     }
   },
   "controlsProfile": "default",
-  "notes": "GIFs vetoriais gerados automaticamente foram rejeitados: estados sem arte original desativados. Preservar somente animações provenientes das artes aprovadas pelo usuário.",
+  "notes": "Animações de GIFs fornecidos pelo usuário; imagens em DANIEL.png mantidas somente como referência.",
   "effects": {
     "magic1": "hipercorrida.svg",
     "magic2": "onda-sonora.svg",
