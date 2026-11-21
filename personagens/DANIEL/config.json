@@ -9,7 +9,7 @@
       "file": "idle.png",
       "frames": 8,
       "columns": 4,
-      "fps": 8,
+      "fps": 8.0,
       "frameWidth": 192,
       "frameHeight": 256,
       "loop": true
@@ -52,27 +52,27 @@
     },
     "crouch": {
       "file": "crouch.png",
-      "frames": 3,
-      "columns": 3,
-      "fps": 10,
+      "frames": 6,
+      "columns": 4,
+      "fps": 7.69,
       "frameWidth": 192,
       "frameHeight": 256,
       "loop": false
     },
     "guard": {
       "file": "guard.png",
-      "frames": 4,
+      "frames": 8,
       "columns": 4,
-      "fps": 10,
+      "fps": 10.0,
       "frameWidth": 192,
       "frameHeight": 256,
       "loop": true
     },
     "crouchGuard": {
       "file": "crouchGuard.png",
-      "frames": 3,
-      "columns": 3,
-      "fps": 10,
+      "frames": 8,
+      "columns": 4,
+      "fps": 9.09,
       "frameWidth": 192,
       "frameHeight": 256,
       "loop": true
@@ -90,7 +90,7 @@
       "file": "punchBack.png",
       "frames": 7,
       "columns": 4,
-      "fps": 17,
+      "fps": 10.77,
       "frameWidth": 192,
       "frameHeight": 256,
       "loop": false
@@ -160,9 +160,9 @@
     },
     "magic3": {
       "file": "magic3.png",
-      "frames": 8,
+      "frames": 9,
       "columns": 4,
-      "fps": 18,
+      "fps": 11.11,
       "frameWidth": 192,
       "frameHeight": 256,
       "loop": false
