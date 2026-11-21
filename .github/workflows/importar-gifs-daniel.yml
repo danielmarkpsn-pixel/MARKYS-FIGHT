@@ -5,6 +5,7 @@ on:
     paths:
       - 'personagens/DANIEL/gifs/**'
       - 'tools/import_gif_animations.py'
+      - 'tests/test_daniel_combat.py'
       - '.github/workflows/importar-gifs-daniel.yml'
   workflow_dispatch:
 permissions:
