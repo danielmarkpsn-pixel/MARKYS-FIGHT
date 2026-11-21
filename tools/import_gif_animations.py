@@ -19,6 +19,12 @@ STATES=('idle','walk','run','jump','fall','crouch','guard','crouchGuard','punchF
         'magic2','magic3','special')
 # Correspondência EXATA dos 14 GIFs originais existentes na main.
 DANIEL_NAMES={
+    'idle':'Daniel em posição de combate, animação de respiração-1.gif',
+    'crouch':'Animação de Crouch do Daniel-2.gif',
+    'guard':'Animação de guarda defensiva pixel art-3.gif',
+    'crouchGuard':'Daniel em Guarda_ Animação Pixel Art-4.gif',
+    'punchBack':'Sequência Animada de Soco do Daniel-5.gif',
+    'magic3':'Daniel Liberta o Golpe de Energia-6.gif',
     'walk':'DANIEL CAMINHANDO.gif',
     'run':'DANIEL CORRENDO.gif',
     'jump':'DANIEL SALTANDO.gif',
