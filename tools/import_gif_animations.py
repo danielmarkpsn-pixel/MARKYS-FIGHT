@@ -22,6 +22,7 @@ DANIEL_NAMES={
     'walk':'DANIEL CAMINHANDO.gif',
     'run':'DANIEL CORRENDO.gif',
     'jump':'DANIEL SALTANDO.gif',
+    'fall':'DANIEL CAINDO.gif',
     'punchFront':'DANIEL SOCO DIRETO.gif',
     'kickFront':'DANIEL CHUTE ALTO.gif',
     'hurt':'DANIEL SOFRENDO DANO.gif',
