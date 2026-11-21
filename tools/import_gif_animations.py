@@ -17,25 +17,24 @@ ROOT=Path(__file__).resolve().parents[1]
 STATES=('idle','walk','run','jump','fall','crouch','guard','crouchGuard','punchFront',
         'punchBack','kickFront','kickBack','hurt','knockdown','getup','magic1',
         'magic2','magic3','special')
-# Correspondência EXATA dos 14 GIFs originais existentes na main.
+# GIFs oficiais presentes na pasta personagens/DANIEL/gifs.
 DANIEL_NAMES={
-    'idle':'Daniel em posição de combate, animação de respiração-1.gif',
-    'crouch':'Animação de Crouch do Daniel-2.gif',
-    'guard':'Animação de guarda defensiva pixel art-3.gif',
-    'crouchGuard':'Daniel em Guarda_ Animação Pixel Art-4.gif',
-    'punchBack':'Sequência Animada de Soco do Daniel-5.gif',
-    'magic3':'Daniel Liberta o Golpe de Energia-6.gif',
+    'idle':'DANIEL PARADO.gif',
     'walk':'DANIEL CAMINHANDO.gif',
     'run':'DANIEL CORRENDO.gif',
     'jump':'DANIEL SALTANDO.gif',
-    'fall':'DANIEL CAINDO.gif',
-    'punchFront':'DANIEL SOCO DIRETO.gif',
+    'crouch':'DANIEL ABAIXANDO.gif',
+    'guard':'DANIEL FAZENDO GUARDA.gif',
+    'crouchGuard':'DANIEL DEFENDENDO EM BAIXO.gif',
+    'punchFront':'DANIEL SOCO ALTO.gif',
+    'punchBack':'DANIEL SOCO ABAIXADO.gif',
     'kickFront':'DANIEL CHUTE ALTO.gif',
+    'kickBack':'DANIEL SALTO COM CHUTE.gif',
     'hurt':'DANIEL SOFRENDO DANO.gif',
-    'knockdown':'DANIEL DERROTADO.gif',
     'getup':'DANIEL LEVANTANDO.gif',
     'magic1':'DANIEL HIPERCORRIDA.gif',
     'magic2':'DANIEL ONDA SONICA.gif',
+    'magic3':'DANIEL RAJADA DE ENERGIA.gif',
     'special':'DANIEL ESPECIAL PARTE 1.gif',
 }
 SPECIAL_PARTS=(
@@ -43,9 +42,12 @@ SPECIAL_PARTS=(
     'DANIEL ESPECIAL PARTE 2.gif',
     'DANIEL ESPECIAL PARTE 3.gif',
 )
-OPTIONAL_DANIEL={
-    'fall':'DANIEL CAINDO.gif',
-    'kickBack':'DANIEL SALTO MORTAL PRA TRAS.gif',
+OPTIONAL_DANIEL={}
+# GIFs adicionais mantidos como animações nomeadas, sem substituir ações existentes.
+DANIEL_EXTRAS={
+    'walkBack':'DANIEL ANDANDO PARA TRAS.gif',
+    'jumpPunch':'DANIEL SALTO COM SOCO.gif',
+    'backflip':'DANIEL SALTO MORTAL PRA TRAS.gif',
 }
 LOOP={'idle','walk','run','guard','crouchGuard'}
 MAX_FRAMES=240
@@ -103,8 +105,8 @@ def export(name, fps=None, width=192, height=256, columns=4, dry_run=False):
     config_path=folder/'config.json'
     config=json.loads(config_path.read_text(encoding='utf-8'))
     prepared=[]
-    for state in STATES:
-        filename=(DANIEL_NAMES.get(state,state+'.gif') if name=='DANIEL' else state+'.gif')
+    for state in STATES+tuple(DANIEL_EXTRAS if name=='DANIEL' else ()):
+        filename=(DANIEL_NAMES.get(state,DANIEL_EXTRAS.get(state)) if name=='DANIEL' else state+'.gif')
         path=find_gif(gifs,filename) if filename else None
         if not path and name=='DANIEL' and state in OPTIONAL_DANIEL:
             path=find_gif(gifs,OPTIONAL_DANIEL[state])
@@ -142,6 +144,10 @@ def export(name, fps=None, width=192, height=256, columns=4, dry_run=False):
             sprite.save(dest/(state+'.png'),optimize=True)
             config.setdefault('animations',{})[state]=definition
     if not dry_run:
+        # Nunca manter referências a PNGs excluídos ou animações antigas.
+        available={state for state,_,_,_ in prepared}
+        for obsolete in set(config.get('animations',{}))-available:
+            config['animations'].pop(obsolete,None)
         config['notes']='Animações de GIFs fornecidos pelo usuário; imagens em DANIEL.png mantidas somente como referência.'
         config_path.write_text(json.dumps(config,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     print(f'{len(prepared)} movimentos importados' if not dry_run else f'{len(prepared)} movimentos encontrados (simulação)')
