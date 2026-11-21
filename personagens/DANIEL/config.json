@@ -5,15 +5,7 @@
   "spriteRoot": "./sprites/",
   "assetRoot": "./assets/",
   "animations": {
-    "idle": {
-      "file": "idle.png",
-      "frames": 8,
-      "columns": 4,
-      "fps": 8.0,
-      "frameWidth": 192,
-      "frameHeight": 256,
-      "loop": true
-    },
+    "idle": null,
     "walk": {
       "file": "walk.png",
       "frames": 8,
@@ -50,56 +42,24 @@
       "frameHeight": 256,
       "loop": false
     },
-    "crouch": {
-      "file": "crouch.png",
-      "frames": 6,
-      "columns": 4,
-      "fps": 7.69,
-      "frameWidth": 192,
-      "frameHeight": 256,
-      "loop": false
-    },
-    "guard": {
-      "file": "guard.png",
-      "frames": 8,
-      "columns": 4,
-      "fps": 10.0,
-      "frameWidth": 192,
-      "frameHeight": 256,
-      "loop": true
-    },
-    "crouchGuard": {
-      "file": "crouchGuard.png",
-      "frames": 8,
-      "columns": 4,
-      "fps": 9.09,
-      "frameWidth": 192,
-      "frameHeight": 256,
-      "loop": true
-    },
+    "crouch": null,
+    "guard": null,
+    "crouchGuard": null,
     "punchFront": {
       "file": "punchFront.png",
       "frames": 8,
       "columns": 4,
-      "fps": 10.0,
+      "fps": 10,
       "frameWidth": 192,
       "frameHeight": 256,
       "loop": false
     },
-    "punchBack": {
-      "file": "punchBack.png",
-      "frames": 7,
-      "columns": 4,
-      "fps": 10.77,
-      "frameWidth": 192,
-      "frameHeight": 256,
-      "loop": false
-    },
+    "punchBack": null,
     "kickFront": {
       "file": "kickFront.png",
       "frames": 8,
       "columns": 4,
-      "fps": 10.0,
+      "fps": 10,
       "frameWidth": 192,
       "frameHeight": 256,
       "loop": false
@@ -158,15 +118,7 @@
       "frameHeight": 256,
       "loop": false
     },
-    "magic3": {
-      "file": "magic3.png",
-      "frames": 9,
-      "columns": 4,
-      "fps": 11.11,
-      "frameWidth": 192,
-      "frameHeight": 256,
-      "loop": false
-    },
+    "magic3": null,
     "special": {
       "file": "special.png",
       "frames": 36,
@@ -178,7 +130,7 @@
     }
   },
   "controlsProfile": "default",
-  "notes": "Animações de GIFs fornecidos pelo usuário; imagens em DANIEL.png mantidas somente como referência.",
+  "notes": "GIFs vetoriais gerados automaticamente foram rejeitados: estados sem arte original desativados. Preservar somente animações provenientes das artes aprovadas pelo usuário.",
   "effects": {
     "magic1": "hipercorrida.svg",
     "magic2": "onda-sonora.svg",
