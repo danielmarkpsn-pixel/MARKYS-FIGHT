@@ -41,15 +41,6 @@
       "frameHeight": 256,
       "loop": false
     },
-    "fall": {
-      "file": "fall.png",
-      "frames": 8,
-      "columns": 4,
-      "fps": 7.14,
-      "frameWidth": 192,
-      "frameHeight": 256,
-      "loop": false
-    },
     "crouch": {
       "file": "crouch.png",
       "frames": 8,
@@ -108,7 +99,7 @@
       "file": "kickBack.png",
       "frames": 8,
       "columns": 4,
-      "fps": 9.09,
+      "fps": 8.33,
       "frameWidth": 192,
       "frameHeight": 256,
       "loop": false
@@ -117,25 +108,16 @@
       "file": "hurt.png",
       "frames": 8,
       "columns": 4,
-      "fps": 9.09,
-      "frameWidth": 192,
-      "frameHeight": 256,
-      "loop": false
-    },
-    "knockdown": {
-      "file": "knockdown.png",
-      "frames": 12,
-      "columns": 4,
-      "fps": 12.5,
+      "fps": 8.33,
       "frameWidth": 192,
       "frameHeight": 256,
       "loop": false
     },
     "getup": {
       "file": "getup.png",
-      "frames": 12,
+      "frames": 8,
       "columns": 4,
-      "fps": 12.5,
+      "fps": 8.33,
       "frameWidth": 192,
       "frameHeight": 256,
       "loop": false
@@ -169,9 +151,36 @@
     },
     "special": {
       "file": "special.png",
-      "frames": 36,
+      "frames": 44,
       "columns": 4,
-      "fps": 12.5,
+      "fps": 11.46,
+      "frameWidth": 192,
+      "frameHeight": 256,
+      "loop": false
+    },
+    "walkBack": {
+      "file": "walkBack.png",
+      "frames": 8,
+      "columns": 4,
+      "fps": 8.33,
+      "frameWidth": 192,
+      "frameHeight": 256,
+      "loop": false
+    },
+    "jumpPunch": {
+      "file": "jumpPunch.png",
+      "frames": 8,
+      "columns": 4,
+      "fps": 9.09,
+      "frameWidth": 192,
+      "frameHeight": 256,
+      "loop": false
+    },
+    "backflip": {
+      "file": "backflip.png",
+      "frames": 8,
+      "columns": 4,
+      "fps": 9.09,
       "frameWidth": 192,
       "frameHeight": 256,
       "loop": false
