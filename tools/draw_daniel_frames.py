@@ -43,7 +43,9 @@ def position(state,t):
  attack=state.startswith(('punch','kick')) or state in ('magic3','special')
  power=max(0,math.sin(math.pi*t))
  cx=96;cy=141
- if crouch:cy=171
+ if state in ('idle','guard','crouch','crouchGuard'):
+  cy+=2.5*math.sin(t*math.tau)
+ if crouch:cy=171+2.5*math.sin(t*math.tau)
  if running:cy=139-6*bounce;cx+=9
  if walking:cy=141-3*bounce
  if jump:cy=116-20*math.sin(t*math.pi)
