@@ -18,7 +18,7 @@
       "file": "walk.png",
       "frames": 8,
       "columns": 4,
-      "fps": 12,
+      "fps": 9.09,
       "frameWidth": 192,
       "frameHeight": 256,
       "loop": true
@@ -27,16 +27,16 @@
       "file": "run.png",
       "frames": 8,
       "columns": 4,
-      "fps": 16,
+      "fps": 11.11,
       "frameWidth": 192,
       "frameHeight": 256,
       "loop": true
     },
     "jump": {
       "file": "jump.png",
-      "frames": 5,
+      "frames": 8,
       "columns": 4,
-      "fps": 12,
+      "fps": 9.09,
       "frameWidth": 192,
       "frameHeight": 256,
       "loop": false
@@ -79,9 +79,9 @@
     },
     "punchFront": {
       "file": "punchFront.png",
-      "frames": 6,
+      "frames": 8,
       "columns": 4,
-      "fps": 18,
+      "fps": 10.0,
       "frameWidth": 192,
       "frameHeight": 256,
       "loop": false
@@ -97,9 +97,9 @@
     },
     "kickFront": {
       "file": "kickFront.png",
-      "frames": 7,
+      "frames": 8,
       "columns": 4,
-      "fps": 17,
+      "fps": 10.0,
       "frameWidth": 192,
       "frameHeight": 256,
       "loop": false
@@ -108,34 +108,34 @@
       "file": "kickBack.png",
       "frames": 8,
       "columns": 4,
-      "fps": 16,
+      "fps": 9.09,
       "frameWidth": 192,
       "frameHeight": 256,
       "loop": false
     },
     "hurt": {
       "file": "hurt.png",
-      "frames": 4,
+      "frames": 8,
       "columns": 4,
-      "fps": 12,
+      "fps": 9.09,
       "frameWidth": 192,
       "frameHeight": 256,
       "loop": false
     },
     "knockdown": {
       "file": "knockdown.png",
-      "frames": 6,
+      "frames": 12,
       "columns": 4,
-      "fps": 12,
+      "fps": 12.5,
       "frameWidth": 192,
       "frameHeight": 256,
       "loop": false
     },
     "getup": {
       "file": "getup.png",
-      "frames": 6,
+      "frames": 12,
       "columns": 4,
-      "fps": 12,
+      "fps": 12.5,
       "frameWidth": 192,
       "frameHeight": 256,
       "loop": false
@@ -144,7 +144,7 @@
       "file": "magic1.png",
       "frames": 8,
       "columns": 4,
-      "fps": 18,
+      "fps": 11.11,
       "frameWidth": 192,
       "frameHeight": 256,
       "loop": false
@@ -153,7 +153,7 @@
       "file": "magic2.png",
       "frames": 8,
       "columns": 4,
-      "fps": 16,
+      "fps": 9.09,
       "frameWidth": 192,
       "frameHeight": 256,
       "loop": false
@@ -169,16 +169,16 @@
     },
     "special": {
       "file": "special.png",
-      "frames": 12,
+      "frames": 36,
       "columns": 4,
-      "fps": 20,
+      "fps": 12.5,
       "frameWidth": 192,
       "frameHeight": 256,
       "loop": false
     }
   },
   "controlsProfile": "default",
-  "notes": "Spritesheets vetoriais experimentais, cada pose desenhada em SVG sem recorte de DANIEL.png. Exigem revisão artística e testes em partida.",
+  "notes": "Animações de GIFs fornecidos pelo usuário; imagens em DANIEL.png mantidas somente como referência.",
   "effects": {
     "magic1": "hipercorrida.svg",
     "magic2": "onda-sonora.svg",
