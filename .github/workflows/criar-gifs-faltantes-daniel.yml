@@ -4,6 +4,7 @@ on:
     branches: [main]
     paths:
       - 'tools/create_missing_daniel_gifs.py'
+      - 'tools/draw_daniel_frames.py'
       - '.github/workflows/criar-gifs-faltantes-daniel.yml'
   workflow_dispatch:
 permissions:
