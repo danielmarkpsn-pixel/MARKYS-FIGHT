@@ -43,9 +43,9 @@
     },
     "fall": {
       "file": "fall.png",
-      "frames": 3,
-      "columns": 3,
-      "fps": 10,
+      "frames": 8,
+      "columns": 4,
+      "fps": 7.14,
       "frameWidth": 192,
       "frameHeight": 256,
       "loop": false
